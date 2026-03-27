@@ -46,7 +46,7 @@ export default function Contact() {
                 <p className="font-accent italic text-2xl text-brown/80 leading-relaxed">
                   "Great things are not done by impulse, but by a series of small things brought together."
                 </p>
-                <p className="font-body text-stone mt-3 text-sm tracking-widest">— Vincent van Gogh</p>
+                <p className="font-body text-stone mt-3 text-sm tracking-widest">— Vincent Van Gogh</p>
               </div>
 
               <p className="font-body text-lg text-brown/70 leading-relaxed">
