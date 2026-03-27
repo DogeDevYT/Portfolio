@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* ── Renaissance Theme Tokens ── */
+@theme {
+  --color-gold:        #C9A84C;
+  --color-gold-light:  #E8C97A;
+  --color-gold-dark:   #9A7A2E;
+  --color-parchment:   #F5ECD7;
+  --color-parchment-dark: #E8D9BC;
+  --color-brown:       #3B2314;
+  --color-brown-light: #5C3D26;
+  --color-aged:        #8B3A3A;
+  --color-ink:         #1C1209;
+  --color-stone:       #8A7B6B;
+  --color-stone-light: #B5A898;
+  --color-cream:       #FBF6EC;
+  --color-shadow:      #2A1A0E;
+
+  --font-display: "Cinzel", serif;
+  --font-body:    "Cormorant Garamond", serif;
+  --font-accent:  "IM Fell English", serif;
+}
+
+/* ── Global Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+  background-color: #1C1209;
+  color: #F5ECD7;
+  overflow-x: hidden;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1C1209;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8C97A;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background: rgba(201, 168, 76, 0.35);
+  color: #F5ECD7;
+}
+
+/* ── Parchment Texture ── */
+.parchment-texture {
+  background-color: #F5ECD7;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 20% 50%, rgba(180,140,80,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(100,60,20,0.06) 0%, transparent 50%);
+}
+
+.dark-texture {
+  background-color: #1C1209;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.05) 0%, transparent 70%);
+}
+
+/* ── Gold Border Utility ── */
+.border-gold-ornate {
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  box-shadow:
+    0 0 0 3px rgba(201, 168, 76, 0.08),
+    inset 0 0 20px rgba(201, 168, 76, 0.04);
+}
+
+/* ── Drop Cap ── */
+.drop-cap::first-letter {
+  font-family: "Cinzel", serif;
+  font-size: 4rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.75;
+  margin-right: 0.1em;
+  color: #C9A84C;
+  text-shadow: 2px 2px 8px rgba(201, 168, 76, 0.3);
+}
+
+/* ── Vignette Overlay ── */
+.vignette {
+  position: relative;
+}
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(28,18,9,0.6) 100%);
+  pointer-events: none;
+}
+
+/* ── Ornamental HR ── */
+.ornament-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.ornament-line::before,
+.ornament-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.6), transparent);
+}
+
+/* ── Gilded Card ── */
+.gilded-card {
+  background: linear-gradient(135deg, rgba(59,35,20,0.8) 0%, rgba(28,18,9,0.9) 100%);
+  border: 1px solid rgba(201,168,76,0.3);
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(201,168,76,0.15);
+  backdrop-filter: blur(4px);
+}
+.gilded-card:hover {
+  border-color: rgba(201,168,76,0.6);
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.5),
+    0 0 20px rgba(201,168,76,0.1),
+    inset 0 1px 0 rgba(201,168,76,0.2);
+}
+
+/* ── Glow Text ── */
+.text-glow {
+  text-shadow: 0 0 30px rgba(201, 168, 76, 0.4), 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ── Wax Seal ── */
+.wax-seal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #C9784C, #8B3A3A 60%, #5A1A1A);
+  box-shadow:
+    0 4px 16px rgba(139,58,58,0.5),
+    inset 0 2px 4px rgba(255,180,120,0.2),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+/* ── Transitions ── */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* ── Section Padding ── */
+.section-pad {
+  padding: 6rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .section-pad {
+    padding: 8rem 2rem;
+  }
+}
