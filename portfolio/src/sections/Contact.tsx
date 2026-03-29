@@ -12,19 +12,33 @@ const socials = [
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setSending(true);
+
     const form = e.currentTarget as HTMLFormElement;
     const name = (form.querySelector('#name') as HTMLInputElement).value;
     const email = (form.querySelector('#email') as HTMLInputElement).value;
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
 
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-    const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    window.location.href = `mailto:raghav.vikramprabhu@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+      if (!res.ok) throw new Error('Failed to send');
+      setSent(true);
+    } catch {
+      setError('Something went wrong. Please try emailing me directly.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -136,12 +150,16 @@ export default function Contact() {
                     onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(59,35,20,0.25)'; }}
                   />
                 </div>
+                {error && (
+                  <p className="font-body text-sm text-center" style={{ color: '#8B3A3A' }}>{error}</p>
+                )}
                 <button
                   type="submit"
-                  className="w-full font-display text-xs tracking-[0.25em] uppercase py-4 text-parchment transition-all duration-300 hover:shadow-[0_4px_20px_rgba(139,58,58,0.4)]"
+                  disabled={sending}
+                  className="w-full font-display text-xs tracking-[0.25em] uppercase py-4 text-parchment transition-all duration-300 hover:shadow-[0_4px_20px_rgba(139,58,58,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
                   style={{ background: 'linear-gradient(135deg, #8B3A3A, #5A1A1A)', border: '1px solid rgba(139,58,58,0.4)' }}
                 >
-                  Dispatch Scroll ✦
+                  {sending ? 'Dispatching...' : 'Dispatch Scroll ✦'}
                 </button>
               </form>
             )}
