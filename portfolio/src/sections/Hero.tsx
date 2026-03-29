@@ -46,7 +46,7 @@ export default function Hero() {
       </svg>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full">
         {/* Pre-title */}
         <motion.p
           className="font-accent italic text-stone-light tracking-[0.3em] text-sm mb-6"
@@ -59,7 +59,7 @@ export default function Hero() {
 
         {/* Main Name */}
         <motion.h1
-          className="font-display font-black text-4xl md:text-6xl lg:text-7xl tracking-widest text-gold text-glow uppercase mb-4"
+          className="font-display font-black text-3xl md:text-6xl lg:text-7xl tracking-wider md:tracking-widest text-gold text-glow uppercase mb-4"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -74,9 +74,9 @@ export default function Hero() {
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <div className="h-px w-32 md:w-56" style={{ background: 'linear-gradient(to right, transparent, rgba(201,168,76,0.7))' }} />
-          <span className="text-gold text-2xl">❧</span>
-          <div className="h-px w-32 md:w-56" style={{ background: 'linear-gradient(to left, transparent, rgba(201,168,76,0.7))' }} />
+          <div className="h-px w-16 sm:w-32 md:w-56 flex-shrink" style={{ background: 'linear-gradient(to right, transparent, rgba(201,168,76,0.7))' }} />
+          <span className="text-gold text-2xl flex-shrink-0">❧</span>
+          <div className="h-px w-16 sm:w-32 md:w-56 flex-shrink" style={{ background: 'linear-gradient(to left, transparent, rgba(201,168,76,0.7))' }} />
         </motion.div>
 
         {/* Subtitle */}

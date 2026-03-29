@@ -29,6 +29,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 body {
