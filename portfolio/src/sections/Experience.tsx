@@ -8,7 +8,7 @@ const experiences = [
     period: 'January 2026 — Present',
     description:
       'Designed, Formulated, and Actualized Conceptual E.P.S. (Electrical Power System) for a Lunar Rover utilizing several tools and techniques.',
-    highlights: ['KiCAD', 'Project Management', 'Team Collaboration', 'Excel'],
+    highlights: ['KiCAD', 'Project Management', 'Team Collaboration', 'Siemens NX CAD'],
   },
   {
     role: 'Project Manager',
