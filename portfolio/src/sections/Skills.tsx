@@ -7,10 +7,10 @@ const skillGroups = [
     subtitle: 'Frontend',
     icon: '🖋',
     skills: [
-      { name: 'React / Next.js', level: 90 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'TailwindCSS', level: 90 },
-      { name: 'Framer Motion', level: 75 },
+      'React / Next.js',
+      'TypeScript',
+      'TailwindCSS',
+      'Framer Motion',
     ],
   },
   {
@@ -18,13 +18,13 @@ const skillGroups = [
     subtitle: 'Backend',
     icon: '⚗',
     skills: [
-      { name: 'Node.js / Express', level: 85 },
-      { name: 'Python / Django', level: 75 },
-      { name: 'PostgreSQL', level: 80 },
-      { name: 'REST', level: 80 },
-      { name: 'RAG', level: 70 },
-      { name: 'LangChain', level: 70 },
-      { name: 'AI/LLMs', level: 95 },
+      'Node.js / Express',
+      'Python / Django',
+      'PostgreSQL',
+      'REST',
+      'RAG',
+      'LangChain',
+      'AI / LLMs',
     ],
   },
   {
@@ -32,10 +32,10 @@ const skillGroups = [
     subtitle: 'Tools & DevOps',
     icon: '🗺',
     skills: [
-      { name: 'Git / GitHub', level: 90 },
-      { name: 'Docker', level: 70 },
-      { name: 'AWS / Vercel / GCP / Supabase / Azure', level: 72 },
-      { name: 'CI/CD', level: 68 },
+      'Git / GitHub',
+      'Docker',
+      'AWS / Vercel / GCP / Supabase / Azure',
+      'CI/CD',
     ],
   },
   {
@@ -43,31 +43,20 @@ const skillGroups = [
     subtitle: 'Hardware & Embedded',
     icon: '⚙',
     skills: [
-      { name: 'Verilog / SystemVerilog', level: 75 },
-      { name: 'Breadboarding / Circuits', level: 80 },
-      { name: 'Embedded C / C++', level: 72 },
-      { name: 'Arduino / RTOS', level: 70 },
-      { name: 'KiCAD / PCB Design', level: 65 },
+      'Verilog / SystemVerilog',
+      'Breadboarding / Circuits',
+      'Embedded C / C++',
+      'Arduino / RTOS',
+      'KiCAD / PCB Design',
     ],
   },
 ];
 
-function SkillBar({ name, level }: { name: string; level: number }) {
+function SkillItem({ name }: { name: string }) {
   return (
-    <div className="space-y-1.5">
-      <div className="flex justify-between items-center">
-        <span className="font-body text-sm text-parchment/90">{name}</span>
-        <span className="font-display text-xs text-gold/70">{level}%</span>
-      </div>
-      <div className="h-1.5 w-full rounded-full bg-brown/30 overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-1000"
-          style={{
-            width: `${level}%`,
-            background: 'linear-gradient(to right, #9A7A2E, #C9A84C, #E8C97A)',
-          }}
-        />
-      </div>
+    <div className="flex items-start gap-3 border-b border-gold/10 pb-3 last:border-b-0 last:pb-0">
+      <span className="mt-1 text-gold/70 text-[0.65rem]" aria-hidden="true">✦</span>
+      <span className="font-body text-base leading-snug text-parchment/90">{name}</span>
     </div>
   );
 }
@@ -102,10 +91,10 @@ export default function Skills() {
                   </div>
                 </div>
 
-                {/* Skill bars */}
-                <div className="space-y-5">
+                {/* Skills */}
+                <div className="space-y-3">
                   {group.skills.map((skill) => (
-                    <SkillBar key={skill.name} {...skill} />
+                    <SkillItem key={skill} name={skill} />
                   ))}
                 </div>
               </div>
