@@ -3,44 +3,83 @@ import SectionHeading from '../components/SectionHeading';
 
 const experiences = [
   {
-    role: 'Electrical Engineer',
-    company: 'NASA L\'SPACE MCA',
-    period: 'January 2026 — Present',
-    description:
-      'Designed, Formulated, and Actualized Conceptual E.P.S. (Electrical Power System) for a Lunar Rover utilizing several tools and techniques.',
-    highlights: ['KiCAD', 'Project Management', 'Team Collaboration', 'Siemens NX CAD'],
+    role: 'Software Engineering Intern',
+    company: 'Vanguard',
+    location: 'Charlotte, NC',
+    period: 'September 2026 — Present',
+    details: [
+      'Restyled the score-over-time graph in an internal code-review tool to align with Vanguard\'s design system and improve usability, contributing to a 10% decrease in ticket volume.',
+      'Updated an AWS SES Lambda to resolve team ownership from repository pull requests and notify the appropriate team when a pull request targets a repository failing code-quality checks.',
+    ],
+    highlights: ['AWS Lambda', 'AWS SES', 'Data Visualization', 'Developer Tooling'],
+  },
+  {
+    role: 'Software Engineering Intern',
+    company: 'Georgia Tech Open Source Projects Office',
+    location: 'Atlanta, GA',
+    period: 'May 2026 — September 2026',
+    details: [
+      'Developed a basis-translation algorithm for QWERTY, a quantum programming language written in Rust and C++, enabling variable quantum-state changes while handling all input cases with 90% less interpreter code.',
+      'Collaborated with a PhD student and a graduate student to repair MLIR basis-vector lowering for the abstract syntax tree and basis translation in the interpreter.',
+      'Fixed evaluation wrapping in the interpreter, bringing unit and integration test pass rates to 100%.',
+    ],
+    highlights: ['Rust', 'C++', 'MLIR', 'Compiler Design', 'Quantum Computing'],
   },
   {
     role: 'Project Manager',
     company: 'GT Webdev',
+    location: 'Atlanta, GA',
     period: 'January 2026 — Present',
-    description:
-      'Spearheaded Development of a platform for GT students to request referrals for internships from their seniors by leveraging a team of 6 developers.',
-    highlights: ['Project Management', 'Team Collaboration', 'React.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+    details: [
+      'Lead a six-developer team building a platform that helps Georgia Tech students request internship referrals from upperclassmen.',
+    ],
+    highlights: ['Project Management', 'React.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+  },
+  {
+    role: 'Electrical Engineer',
+    company: 'NASA L\'SPACE MCA',
+    location: 'Tempe, AZ',
+    period: 'January 2026 — April 2026',
+    details: [
+      'Collaborated with a 20-person team to simulate a NASA mission from conception through Preliminary Design Review.',
+      'Researched more than 10 past NASA missions and led development of a lunar-rover electrical power system in KiCad.',
+    ],
+    highlights: ['KiCad', 'Electrical Power Systems', 'Mission Design', 'Team Collaboration'],
   },
   {
     role: 'Undergraduate Researcher',
-    company: 'Georgia Tech VIP Projects',
-    period: 'May 2025 — Present',
-    description:
-      'Built RAG pipeline and Embedding Model from Scratch for AI MAKERSPACE NEXUS Vertically Integrated Project as well as add features for Flashcard Generation with Aesthetic UI/UX',
-    highlights: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript', 'RAG', 'Next.js', 'Tailwind CSS', 'React.js', 'LangChain'],
+    company: 'Georgia Tech VIP Projects — AI Makerspace Nexus',
+    location: 'Atlanta, GA',
+    period: 'August 2025 — April 2026',
+    details: [
+      'Added five REST endpoints to an Ollama backend for features including flashcard generation and concept-map creation.',
+      'Built a vector-embedding pipeline for local Mistral LLM retrieval over more than 50 GB of Georgia Tech course data.',
+      'Deployed the Study Buddy workload to a PACE-ICE cluster with NVIDIA H200 HGX GPUs, improving execution speed by 10x.',
+    ],
+    highlights: ['Python', 'REST APIs', 'RAG', 'Ollama', 'Mistral', 'HPC'],
   },
   {
     role: 'Flight Software Engineer',
-    company: 'UGA Small Satellite Research Lab',
-    period: 'January 2025 — May 2025',
-    description:
-      'Contributed towards the Rigourous Testing of the MOCI Satellite\'s Onboard Camera and Radio while occasionally debugging C issues with RTOS',
-    highlights: ['C', 'C++', 'Python', 'RTOS', 'Satellite Testing', 'Team Collaboration'],
+    company: 'University of Georgia Small Satellite Research Lab',
+    location: 'Athens, GA',
+    period: 'February 2025 — May 2025',
+    details: [
+      'Reviewed 20 files of performance-critical C code for a real-time embedded system.',
+      'Documented five system-test results and wrote or edited more than 10 Bash and Python test scripts.',
+    ],
+    highlights: ['C', 'Python', 'Bash', 'RTOS', 'Embedded Systems'],
   },
   {
     role: 'Data Engineer Intern',
     company: 'Primerica',
+    location: 'Duluth, GA',
     period: 'August 2023 — May 2024',
-    description:
-      'Built data pipelines and ETL processes to extract, transform, and load data from various sources into a centralized data warehouse.',
-    highlights: ['Python', 'SQL', 'ETL', 'Data Warehousing', 'Excel', 'Microsoft PowerBI'],
+    details: [
+      'Developed Python metadata automation across nine databases, improving large-scale data-processing efficiency by 20%.',
+      'Containerized the tool with Docker and deployed it as a cloud-native microservice through a Jenkins CI/CD pipeline.',
+      'Automated SQL-script generation to streamline database updates and reduce manual effort.',
+    ],
+    highlights: ['Python', 'SQL', 'Docker', 'Jenkins', 'CI/CD'],
   },
 ];
 
@@ -78,6 +117,7 @@ export default function Experience() {
                     <div className="inline-block">
                       <p className="font-display text-xs tracking-[0.2em] uppercase text-gold/70 mb-1">{exp.period}</p>
                       <p className="font-body text-stone-light text-sm tracking-wide">{exp.company}</p>
+                      <p className="font-accent italic text-stone-light/70 text-xs tracking-wide mt-1">{exp.location}</p>
                     </div>
                   </div>
 
@@ -90,9 +130,14 @@ export default function Experience() {
                       <h3 className="font-display font-semibold text-lg text-gold tracking-wide mb-3">
                         {exp.role}
                       </h3>
-                      <p className="font-body text-parchment/75 leading-relaxed text-base mb-4">
-                        {exp.description}
-                      </p>
+                      <ul className="font-body text-parchment/75 leading-relaxed text-base mb-5 space-y-2">
+                        {exp.details.map((detail) => (
+                          <li key={detail} className="flex items-start gap-2">
+                            <span className="text-gold/60 mt-0.5" aria-hidden="true">›</span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
                       <div className="flex flex-wrap gap-2">
                         {exp.highlights.map((h) => (
                           <span
